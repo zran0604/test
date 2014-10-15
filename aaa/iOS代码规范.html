@@ -1,0 +1,856 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>iOS 代码规范</title>
+
+</head>
+<body>
+<p><link rel="stylesheet" href="http://yandex.st/highlightjs/8.2/styles/default.min.css"></p>
+
+<script src="http://yandex.st/highlightjs/8.2/highlight.min.js"></script>
+
+
+<script>
+hljs.tabReplace = ' ';
+hljs.initHighlightingOnLoad();
+</script>
+
+
+<h1>iOS 代码规范</h1>
+
+<h2>文档说明</h2>
+
+<table>
+<thead>
+<tr>
+<th> Version </th>
+<th> Time </th>
+<th> Author </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 0.1 Alpha </td>
+<td> 2014-08-21 </td>
+<td> StoneArk </td>
+</tr>
+<tr>
+<td> 0.2 Beta </td>
+<td> 2014-09-02 </td>
+<td> StoneArk </td>
+</tr>
+<tr>
+<td> 0.3 Beta </td>
+<td> 2014-09-15 </td>
+<td> StoneArk </td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>基本原则</h2>
+
+<p>求同存异。</p>
+
+<p>合理的编码风格不只一个，尊重每位开发人员的编码习惯。但不合理的编码习惯必须避免。</p>
+
+<h2>命名规则</h2>
+
+<ul>
+<li>命名规则</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th> 范围 </th>
+<th> 命名规则 </th>
+<th> 示例 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 变量名、方法名 </td>
+<td> <a href="http://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB">驼峰式命名</a> (小驼峰式命名) </td>
+<td> <code>onlineCount</code> <br /> <code>- (void)viewDidLoad</code>  </td>
+</tr>
+<tr>
+<td> 类名、枚举类型名 </td>
+<td> <a href="http://zh.wikipedia.org/wiki/%E5%B8%95%E6%96%AF%E5%8D%A1%E5%91%BD%E5%90%8D%E6%B3%95">Pascal 命名</a> </td>
+<td> <code>MainViewController</code> <br /> <code>FruitType</code> </td>
+</tr>
+<tr>
+<td> 常量 </td>
+<td> 全部大写或k开头的驼峰式命名 </td>
+<td> <code>FONTNAME</code> <br /> <code>kFontName</code> </td>
+</tr>
+<tr>
+<td> 宏定义 </td>
+<td> 全部大写 </td>
+<td> <code>LOCALDEBUG</code> </td>
+</tr>
+<tr>
+<td> 枚举值 </td>
+<td> 要有枚举类型前缀 </td>
+<td> <code>FruitType</code> 枚举类型的枚举值应为 <code>FruitTypeApple</code>, <code>FruitTypeBanana</code> 等 </td>
+</tr>
+</tbody>
+</table>
+
+
+<ul>
+<li>命名约定</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th> 范围 </th>
+<th> 命名约定 </th>
+<th> 示例 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 数组 </td>
+<td> <code>arr...</code> <br /> <code>...Array</code> </td>
+<td> <code>arrImage</code> <br /> <code>imageArray</code> </td>
+</tr>
+<tr>
+<td> 字符串 </td>
+<td> <code>str...</code> <br /> <code>...String</code> </td>
+<td> <code>strTitle</code> <br /> <code>titleString</code> </td>
+</tr>
+<tr>
+<td> 布尔变量 </td>
+<td> <code>is...</code> </td>
+<td> <code>isShown</code> </td>
+</tr>
+<tr>
+<td> 按钮 </td>
+<td> <code>btn...</code> <br /> <code>...Button</code> </td>
+<td> <code>btnSubmit</code> <br /> <code>submitButton</code> </td>
+</tr>
+<tr>
+<td> 标签 </td>
+<td> <code>lbl...</code> <br /> <code>...Label</code> </td>
+<td> <code>lblTitle</code> <br /> <code>titleLabel</code> </td>
+</tr>
+<tr>
+<td> 滚动视图 </td>
+<td> <code>scrView...</code> <br /> </td>
+<td> <code>...ScrollView</code> </td>
+</tr>
+<tr>
+<td> 按钮点击 </td>
+<td> <code>btn...Click</code> <br /> <code>...Action</code> </td>
+<td> <code>- (void)btnSubmitClick</code> <br /> <code>- (void)submitAction</code> </td>
+</tr>
+</tbody>
+</table>
+
+
+<ul>
+<li>注意
+
+<ol>
+<li>应为有意义的命名，除循环变量外，不得使用 <code>i</code>, <code>j</code>, <code>k</code> 等单字符作为名称。</li>
+<li>不得使用关键字、保留字命名，如 <code>id</code>, <code>const</code>, <code>bool</code> 等。</li>
+<li>尽可能地避免出现<a href="http://zh.wikipedia.org/zh-cn/%E9%AD%94%E8%A1%93%E6%95%B8%E5%AD%97">魔术数字</a>，应采用枚举类型、 常量、宏定义等方式赋予数字以具体意义。</li>
+<li>除非必要（如名称过长或已为众所周知的缩写），命名不应使用缩写。</li>
+<li>除非必要（如特定名称或没有合适的单词），命名应采用规范的英文单词，避免采用汉语拼音。</li>
+</ol>
+</li>
+</ul>
+
+
+<h2>代码缩进</h2>
+
+<h4>基本要求</h4>
+
+<p>所有代码必须有符合其层次结构的缩进，缩进使用 <strong>4 个空格符</strong>。</p>
+
+<h4>大括号的处理</h4>
+
+<p>（1）允许的形式有 K&amp;R、Allman Style、1TBS。</p>
+
+<p>示例：</p>
+
+<pre><code>// K&amp;R
+- (void)functionExample
+{
+    if (YES){
+        ...
+    } else {
+        ...
+    }
+}
+</code></pre>
+
+<pre><code>// Allman Style
+- (void)functionExample
+{
+    if (YES)
+    {
+        ...
+    }
+    else
+    {
+        ...
+    }
+}
+</code></pre>
+
+<p>主要注意点：</p>
+
+<ol type="a">
+<li><p>对于函数</p>
+
+<p> 开括号应在下一行中独占一行，并与开头行有相同的缩进。括号内的语句应该缩进。闭括号应单独占一行，并与开头行有相同的缩进。</p></li>
+<li><p>对于函数内的控制语句块</p>
+
+<p>  （K&amp;R）开括号应与控制语句在同一行中，闭括号单独占一行（除非有 else 或 while 关键字），并与开头行有相同的缩进。<br />
+  （Allman Style）与函数一致，开括号也应独占一行。</p></li>
+<li><p>如果控制语句块内只有一条语句</p>
+
+<p> （K&amp;R）可以省略括号（强烈不推荐，很容易产生逻辑错误，如著名的苹果 gotofail bug）。<br />
+ （1TBS）不能省略括号。</p></li>
+</ol>
+
+
+<p>（2）<strong>不允许</strong> 的大括号缩进方式</p>
+
+<ol type="a">
+<li>闭括号不独占一行</li>
+</ol>
+
+
+<pre><code>- (void)functionExample{
+    if (YES){...}}
+</code></pre>
+
+<ol type="a">
+<li>括号层次对应关系不正确</li>
+</ol>
+
+
+<pre><code>- (void)functionExample
+{
+    if (YES)
+    {
+        ...
+  }
+  }
+</code></pre>
+
+<h4>自动化工具</h4>
+
+<ul>
+<li>简单地调整代码缩进，可运用 Xcode 的 Re-Indent，快捷键 ⌃I。</li>
+<li>更复杂地调整代码格式，可使用 <a href="http://uncrustify.sourceforge.net/">Uncrustify</a> 等工具进行自动化调整。</li>
+</ul>
+
+
+<h2>注释规范</h2>
+
+<h4>注释范围及内容</h4>
+
+<ol>
+<li>对于每一个类，<strong>必须</strong> 在头文件中为其添加类注释。</li>
+<li>对于类的公有属性，<strong>必须</strong> 在头文件中为其添加属性注释。</li>
+<li>对于类的公有方法，<strong>必须</strong> 在头文件中为其添加方法注释。</li>
+<li>对于不含有任何类的头文件，<strong>必须</strong> 在头文件中为其添加头文件注释。</li>
+<li>对于周知的方法，如常用控件的代理方法、SDK 中提供的方法等，不必添加注释（除非必要）。</li>
+<li>对于需要暂时屏蔽的代码（段），可通过注释的形式进行屏蔽。</li>
+<li>对于确定无用或已废弃的代码（段），不应以注释的形式存在于工程中。</li>
+</ol>
+
+
+<h3>注意事项</h3>
+
+<ol>
+<li>注释要用正确、清晰、符合语法的中文或英文书写。</li>
+<li>注释怕短不怕长。注释要详尽地反映代码（段）的业务意义或逻辑意义。</li>
+<li>注释不是对语法的解释，千万不要写这种注释，这种注释是无效且无用的：</li>
+</ol>
+
+
+<pre><code>// 将x加一
+x = x+1;
+</code></pre>
+
+<h4>一般注释形式</h4>
+
+<ul>
+<li>单行注释</li>
+</ul>
+
+
+<pre><code>// 注释内容
+sum=a+b;
+</code></pre>
+
+<p>通常，超过 5 行的注释不应采用单行注释，应采用多行注释。</p>
+
+<ul>
+<li>多行注释</li>
+</ul>
+
+
+<pre><code>/*
+  注释内容1
+  注释内容2
+*/
+</code></pre>
+
+<p>或</p>
+
+<pre><code>/*
+ * 注释内容1
+ * 注释内容2
+ */
+</code></pre>
+
+<ul>
+<li>较长代码段的注释</li>
+</ul>
+
+
+<pre><code>// Start: 代码段简介
+firstLine;
+...
+lastLine;
+// End: 代码段简介
+</code></pre>
+
+<h4>关键注释形式</h4>
+
+<p>按照 <a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html#//apple_ref/doc/uid/TP40001215-CH345-SW1">HeaderDoc</a> 标签规范书写。</p>
+
+<ul>
+<li>类注释</li>
+</ul>
+
+
+<pre><code>/*!
+ * 类描述
+ */
+@interface ExampleClass : NSObject {
+}
+</code></pre>
+
+<pre><code>/// 类描述
+@interface ExampleClass : NSObject {
+}
+</code></pre>
+
+<ul>
+<li>属性注释</li>
+</ul>
+
+
+<pre><code>/*!
+ * @brief 属性简介
+ * @discussion 属性详细描述
+ */
+@property (strong, nonatomic) NSString *strExample;
+</code></pre>
+
+<pre><code>/// 属性简介
+@property (strong, nonatomic) NSString *strExample;
+</code></pre>
+
+<p>其中，@discussion 标签为可选项。</p>
+
+<ul>
+<li>方法注释</li>
+</ul>
+
+
+<p>简单方法：</p>
+
+<pre><code>/*!
+ *  @brief 方法简介
+ */
+- (void)simpleMethod;
+</code></pre>
+
+<pre><code>/// 方法简介
+- (void)simpleMethod;
+</code></pre>
+
+<p>含有参数和返回值的方法：</p>
+
+<pre><code>/*!
+ *  @brief 方法简介
+ *
+ *  @param para1 参数一描述
+ *  @param para2 参数二描述
+ * 
+ *  @return 返回结果描述
+ */
+- (BOOL)exampleMethodWithPara1:(NSString*)para1 Para2:(NSString*)para2;
+</code></pre>
+
+<p>更为复杂的方式：</p>
+
+<pre><code>/*!
+ *  @brief 方法简介
+ *  @discussion 方法具体描述
+ *  @param para1 参数一描述
+ *  @param para2 参数二描述
+ *  @return 返回结果描述
+ *  @warning 注意事项
+ */
+- (BOOL)exampleMethodWithPara1:(NSString*)para1 Para2:(NSString*)para2;
+</code></pre>
+
+<ul>
+<li>头文件注释</li>
+</ul>
+
+
+<pre><code>/*!
+ * @header Const.h
+ * @brief 常量表
+ * @author 编写人
+ */
+</code></pre>
+
+<ul>
+<li>枚举类型注释</li>
+</ul>
+
+
+<pre><code>/*!
+ * @typedef FruitType
+ * @brief 枚举类型简介
+ * @constant FruitTypeApple FruitTypeApple简介
+ * @constant FruitTypeBanana FruitTypeBanana简介
+ */
+typedef NS_ENUM(NSInteger, FruitType){
+    /// FruitTypeApple简介
+    FruitTypeApple,
+    /// FruitTypeBanana简介
+    FruitTypeBanana
+};
+</code></pre>
+
+<h4>自动化工具</h4>
+
+<p><a href="https://github.com/onevcat/VVDocumenter-Xcode">VVDocumenter-Xcode</a>，可方便地添加符合规范的注释。</p>
+
+<h2>其他注意事项</h2>
+
+<ul>
+<li><p>NSLog 语句输出的内容应有意义。</p></li>
+<li><p>NSLog 语句只能出现在 Debug Target，在 Release Target 不应存在任何不必要的 NSLog 语句。可使用预编译宏来进行控制：</p></li>
+</ul>
+
+
+<pre><code>#if DEBUG
+    NSLog(@"something");
+#endif
+</code></pre>
+
+<ul>
+<li><p>工程应采用 ARC，并采用 strong 和 weak 替代传统的 retain, copy, assign。</p></li>
+<li><p>代码应松紧适度，适当运用空行。避免过度紧凑和过度宽松的代码，如：</p></li>
+</ul>
+
+
+<p>过度紧凑的代码：</p>
+
+<pre><code>task1Step1;
+task1Step2;
+task1Step3;
+task2Step1;
+task2Step2;
+task2Step3;
+</code></pre>
+
+<pre><code>- (void)functionA
+{
+}
+- (void)functionB
+{
+}
+</code></pre>
+
+<p>过度宽松的代码：</p>
+
+<pre><code>task1Step1;
+
+task1Step2;
+
+task1Step3;
+
+task2Step1;
+
+task2Step2;
+
+task2Step3;
+</code></pre>
+
+<p>松紧适度的代码：</p>
+
+<pre><code>// Task1
+task1Step1;
+task1Step2;
+task1Step3;
+
+// Task2
+task2Step1;
+task2Step2;
+task2Step3;
+</code></pre>
+
+<ul>
+<li>应使用多条简单的代码，避免使用单条复杂的代码，以提高代码可读性。如应避免这样的代码：</li>
+</ul>
+
+
+<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return (section == 0)?55:(section==2?30:20);
+}
+</code></pre>
+
+<p>应更改为：</p>
+
+<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 55;
+    }
+    else if (section == 2)
+    {
+        return 30;
+    }
+    else
+    {
+        return 20;
+    }
+}
+</code></pre>
+
+<ul>
+<li>应避免在循环体中处理边界，如</li>
+</ul>
+
+
+<pre><code>for (int i=0;i&lt;10;i++)
+{
+    if (i==0)
+    {
+        ...
+    }
+    ...
+}
+</code></pre>
+</body>
+</html>
